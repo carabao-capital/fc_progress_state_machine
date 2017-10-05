@@ -1,3 +1,5 @@
 class Lead < ActiveRecord::Base
-  FcProgressStateMachine::Trackable
+  include FcProgressStateMachine::Trackable
+
+  has_one :tracker, class_name: "FcProgressStateMachine::Tracker"
 end

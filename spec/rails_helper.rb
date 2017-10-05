@@ -6,6 +6,7 @@ require File.expand_path("../test_app/config/environment.rb", __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require "pry-nav"
+require "test_after_commit"
 
 ActiveRecord::Migration.maintain_test_schema!
 
