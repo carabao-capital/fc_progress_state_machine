@@ -48,6 +48,9 @@ module FcProgressStateMachine
       lead = Lead.create(status: "hot")
 
       expect(lead.tracker.state.short_name).to eq "v1:or:ho"
+      expect(
+        lead.tracker.transition_logs.first.state_short_name
+      ).to eq "v1:or:ho"
     end
 
     it "creates a Tracker on initial states" do
@@ -55,6 +58,13 @@ module FcProgressStateMachine
       lead.update_attributes(status: "invalid")
 
       expect(lead.tracker.state.short_name).to eq "v1:or:iv"
+      expect(
+        lead.tracker.transition_logs.first.state_short_name
+      ).to eq "v1:or:ho"
+
+      expect(
+        lead.tracker.transition_logs.last.state_short_name
+      ).to eq "v1:or:iv"
     end
   end
 end

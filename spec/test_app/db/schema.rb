@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171005022506) do
+ActiveRecord::Schema.define(version: 20171006021345) do
 
   create_table "fc_progress_state_machine_edges", force: :cascade do |t|
     t.integer  "graph_id"
@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20171005022506) do
     t.integer  "state_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "fc_progress_state_machine_transition_logs", force: :cascade do |t|
+    t.integer  "tracker_id"
+    t.string   "state_short_name"
+    t.datetime "transitioned_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "leads", force: :cascade do |t|
